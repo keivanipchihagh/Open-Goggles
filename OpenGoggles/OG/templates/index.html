@@ -13,7 +13,7 @@
     <title>Open Goggles</title>
 
     <!-- Static files -->
-    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'OG/js/main.js' %}"></script>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -46,12 +46,14 @@
             </div>
 
             <form class="" style="width: 60%; margin: auto">
-                <input type="text" class="form-control" id="name" placeholder="Movie / Series name ..." style="width:79%; padding-top: 0px; display: inline-block">
-                <button type="button" class="btn btn-dark" style="width: 20%; display: inline-block">Search</button>
+                <input id="phrase" name="phrase" type="text" class="form-control" id="name" placeholder="Movie / Series name ..." style="width:79%; padding-top: 0px; display: inline-block">
+                <button type="button" class="btn btn-dark" style="width: 20%; display: inline-block; cursor: point" onclick="search_phrase()">Search</button>
+                <div id="feedback" name="feedback" class="invalid-feedback" style='display: none'>Hmmm, I couldn't find anything, don't you have a Typo?</div>
+                <input type="hidden" name="secret" id="secret" value="{{ secret }}">
             </form>
         </div>
         <div class="row">
-            Hi
+            
         </div>
     </div>
 </body>
