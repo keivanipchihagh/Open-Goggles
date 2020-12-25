@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box
+}
+
+p, h1, h2, h3, h4, h5, h6, label, img {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+p.bold {
+    font-weight: bold
+}
+
+p.inline {
+    display: inline-block;
+}
+
+.result-container {  
+}
+
+.result-poster img {
+}
+
+.result-description {
+
+}
+
+@media screen and (max-width: 750px) {
+
+    .result-poster {
+        margin: auto
+    }
+
+    .result-container {
+        background-color: red
+    }
+
+    .result-description {
+        margin: auto
+    }
+
+}
