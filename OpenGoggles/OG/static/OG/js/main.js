@@ -1,6 +1,5 @@
-function search_phrase()
+﻿function search_phrase()
 {   
-    document.getElementById('feedback').style.display = 'none'
     document.getElementById('phrase').classList.remove('is-invalid')
 
     // Formatted search phrase
@@ -14,10 +13,9 @@ function search_phrase()
             success = true
             result = xmlHttp.responseText
             
-            if (result.includes('Incorrect IMDb ID')) {
+            if (result.includes('Incorrect IMDb ID'))
                 document.getElementById('phrase').classList.toggle('is-invalid')
-                document.getElementById('feedback').style.display = 'block'
-            } else {
+            else {
                 document.getElementById('phrase').classList.toggle('is-valid')
                 process_result(result)
             }
@@ -28,19 +26,30 @@ function search_phrase()
 }
 
 function process_result(result) {
-    result = JSON.parse(result)
-    
-    document.getElementById('Poster').src = result.Poster
-    document.getElementById('Title').innerHTML = " <b>" + result.Title + "</b>"
-    document.getElementById('Year').innerHTML = " <b>" + result.Year + "</b>"
-    document.getElementById('Genre').innerHTML = " <b>" + result.Genre + "</b>"
-    document.getElementById('Duration').innerHTML = " <b>" + result.Duration + "</b>"
-    document.getElementById('Director').innerHTML = " <b>" + result.Director + "</b>"
-    document.getElementById('Actors').innerHTML = " <b>" + result.Actors + "</b>"
-    document.getElementById('Awards').innerHTML = " <b>" + result.Awards + "</b>"
-    document.getElementById('Plot').innerHTML = " <b>" + result.Title + "</b>"
-    document.getElementById('IMDB').innerHTML = result.Ratings[0].Value
-    document.getElementById('RottenTomatoes').innerHTML = result.Ratings[1].Value
-    document.getElementById('Metacritic').innerHTML = result.Ratings[2].Value
+    result = JSON.parse(result);
 
+    document.getElementById('phrase').value = result.Title
+    document.getElementById('Poster').src = result.Poster;
+
+    document.getElementById('Title').innerHTML = "<b>" + result.Title + "</b>";
+    document.getElementById('Rated').innerHTML = result.Rated;
+    document.getElementById('Released').innerHTML = result.Released;
+    document.getElementById('Genre').innerHTML = "&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;" + result.Genre;
+    document.getElementById('Duration').innerHTML = "&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;" + duration_formatter(result.Runtime);
+
+    document.getElementById('Language').innerHTML = "Language: <b>" + result.Language + "</b>";    
+    document.getElementById('Writer').innerHTML = "Writer: <b>" + result.Writer + "</b>";
+    document.getElementById('Director').innerHTML = "Director: <b>" + result.Director + "</b>";
+    document.getElementById('Actors').innerHTML = "Stars: <b>" + result.Actors + "</b>";
+    document.getElementById('Awards').innerHTML = "Awards: <b>" + result.Awards + "</b>";
+    document.getElementById('Plot').innerHTML = result.Plot;
+
+    document.getElementById('IMDB').innerHTML = "<b>" + result.Ratings[0].Value + "</b><br/>IMDB";
+    document.getElementById('RottenTomatoes').innerHTML = "<b>" + result.Ratings[1].Value + "</b><br/>Rotten Tomatoes";
+    document.getElementById('Metacritic').innerHTML = "<b>" + result.Ratings[2].Value + "</b><br/>Metacritic";
+}
+
+function duration_formatter(duration) {
+    duration = duration.replace(' min', '');
+    return Math.floor(duration / 60) + 'h ' + (duration % 60) + 'm';
 }

@@ -19,7 +19,8 @@ p.inline {
     display: inline-block;
 }
 
-.result-container {  
+.result-container {
+    
 }
 
 .result-poster img {
@@ -31,16 +32,21 @@ p.inline {
 
 @media screen and (max-width: 750px) {
 
-    .result-poster {
-        margin: auto
+    .result-container {
+        
     }
 
-    .result-container {
-        background-color: red
-    }
+    .result-poster {
+        margin: auto;
+        float: none !important;
+        width: 100% !important;
+    }    
 
     .result-description {
-        margin: auto
+        margin: auto;
+        float: none !important;
+        width: 100% !important;
+        text-align: center !important;
     }
 
 }

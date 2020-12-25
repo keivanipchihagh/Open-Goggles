@@ -14,7 +14,7 @@
 
     <!-- Static files -->
     <link href="{% static 'OG/css/main.css' %}" type="text/css" rel="stylesheet"></link>
-    <script src="{% static 'OG/js/main.js' %}" type="text/javascript"></script>    
+    <script src="{% static 'OG/js/main.js' %}" type="text/javascript"></script>
     <link rel="shortcut icon" type="image/png" href="{% static 'OG/img/favicon.png' %}" />
 
     <!-- Bootstrap core CSS -->
@@ -22,6 +22,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -48,15 +52,14 @@
                 <p class="lead"></p>
             </div>
 
-            <form class="" style="width: 60%; margin: auto">
-                <input id="phrase" name="phrase" type="text" class="form-control" id="name" placeholder="Movie / Series name ..." style="width:79%; padding-top: 0px; display: inline-block">
-                <button type="button" class="btn btn-dark" style="width: 20%; display: inline-block; cursor: point" onclick="search_phrase()">Search</button>
-                <div id="feedback" name="feedback" class="invalid-feedback" style='display: none'>Hmmm, I couldn't find anything, don't you have a Typo?</div>
+            <form class="" style="width: 60%; margin: auto; display: flex">
+                <input id="phrase" name="phrase" type="text" class="form-control mr-1" id="name" placeholder="Movie / Series name ..." style="width:79%; padding-top: 0px; display: inline-block">
+                <button type="button" class="btn btn-dark ml-1" style="width: 20%; display: inline-block; cursor: pointer" onclick="search_phrase()">Search</button>
                 <input type="hidden" name="secret" id="secret" value="{{ secret }}">
             </form>
         </div>
         <!-- Search Box - End -->
-        
+
         <div class="row">
             <!--<div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="https://m.media-amazon.com/images/M/MV5BNTVkMTFiZWItOTFkOC00YTc3LWFhYzQtZTg3NzAxZjJlNTAyXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SX300.jpg" alt="Card image cap">
@@ -75,25 +78,39 @@
                 </div>
             </div>-->
 
-            <div class="result-container" style="margin: auto; width: 100%">
+            <div class="result-container" style="margin: auto; width: 100%; font-family: 'Open Sans'">
 
                 <div class="result-poster pr-3" style="width: 50%; float: left; text-align: center">
-                    <img id="Poster" name="Poster" src="" alt="Poster" style="max-height:100%; max-width:100%">
+                    <img id="Poster" name="Poster" src="" alt="Poster" style="max-height:100%; max-width:100%; border: 1px solid grey; padding: 3px">
                 </div>
 
                 <div class="result-description pr-3" style="width: 50%; float: left">
-                    <p class="bold" id="Title" name="Title"></p>
-                    <p class="bold" id="Year" name="Year"></p>
-                    <p class="bold" id="Genre" name="Genre"></p>
-                    <p class="bold" id="Duration" name="duration"></p>
-                    <p class="bold" id="Director" name="Director"></p>
-                    <p class="bold" id="Actors" name="Actors"></p>
-                    <p class="bold" id="Awards" name="Awards"></p>
-                    <div class="row mb-3">
-                        <div class="col-sm-4" style="text-align: center; border-right: 1px solid grey"><p class="bold mb-1" id="IMDB" name="IMDB"></p></div>
-                        <div class="col-sm-4" style="text-align: center; border-right: 1px solid grey"><p class="bold mb-1" id="Metacritic" name="Metacritic"></p></div>
-                        <div class="col-sm-4" style="text-align: center"><p class="bold mb-1" id="RottenTomatoes" name="RottenTomatoes"></p></div>
+                    <div class="row mb-3" style="border: 1px solid grey; padding: 10px 15px">
+                        <div style="width: 100%">
+                            <div class="col-sm-10 p-0" style="float: left">
+                                <h4 id="Title" name="Title"></h4>
+                            </div>
+                            <div class="col-sm-2" style="float: left; text-align:center">
+                                <p class="mb-0 badge-dark" id="Rated" name="Rated" style="border: 1px solid grey; padding: 1px 3px; border-radius: 5px; font-size: small"></p>
+                            </div>
+                        </div>
+                        <p class="mb-0" id="Released" name="Released"></p>
+                        <p class="mb-0" id="Genre" name="Genre"></p>
+                        <p class="mb-0" id="Duration" name="duration"></p>
                     </div>
+
+                    <p id="Language" name="Language"></p>
+                    <p id="Writer" name="Writer"></p>
+                    <p id="Director" name="Director"></p>
+                    <p id="Actors" name="Actors"></p>
+                    <p id="Awards" name="Awards"></p>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-4" style="text-align: center; border-right: 1px solid grey"><p class="mb-1" id="IMDB" name="IMDB"></p></div>
+                        <div class="col-sm-4" style="text-align: center; border-right: 1px solid grey"><p class="mb-1" id="Metacritic" name="Metacritic"></p></div>
+                        <div class="col-sm-4" style="text-align: center"><p class="mb-1" id="RottenTomatoes" name="RottenTomatoes"></p></div>
+                    </div>
+
                     <p id="Plot" name="Plot" style="font-style: italic"></p>
                 </div>
 
