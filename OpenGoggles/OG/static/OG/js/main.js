@@ -28,7 +28,7 @@
 function process_result(result) {
     result = JSON.parse(result);
 
-    document.getElementById('phrase').value = result.Title
+    document.getElementById('phrase').value = result.Title;
     document.getElementById('Poster').src = result.Poster;
 
     document.getElementById('Title').innerHTML = "<b>" + result.Title + "</b>";
@@ -40,7 +40,7 @@ function process_result(result) {
     document.getElementById('Language').innerHTML = "Language: <b>" + result.Language + "</b>";    
     document.getElementById('Writer').innerHTML = "Writer: <b>" + result.Writer + "</b>";
     document.getElementById('Director').innerHTML = "Director: <b>" + result.Director + "</b>";
-    document.getElementById('Actors').innerHTML = "Stars: <b>" + result.Actors + "</b>";
+    document.getElementById('Actors').innerHTML = "Stars: <b>" + actors_formatter(result.Actors) + "</b>";
     document.getElementById('Awards').innerHTML = "Awards: <b>" + result.Awards + "</b>";
     document.getElementById('Plot').innerHTML = result.Plot;
 
@@ -52,4 +52,17 @@ function process_result(result) {
 function duration_formatter(duration) {
     duration = duration.replace(' min', '');
     return Math.floor(duration / 60) + 'h ' + (duration % 60) + 'm';
+}
+
+function actors_formatter(actors) {
+    actors = actors.split(', ');
+
+    for (i = 0; i < actors.length; i++)
+        actors[i] = "<a href='#' data-title='" + actors[i] + "' data-toggle='popover' data-trigger='focus' data-placement='top' data-content='Hi'>" + actors[i] + "</a> ";
+
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();   
+        });
+
+    return actors;
 }
