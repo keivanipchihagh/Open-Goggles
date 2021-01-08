@@ -10,4 +10,4 @@ I made this project to learn more about Django, Boostrap, Web Scraping & APIs. T
 See Issues or have a new idea? Contributions are welcomed
 
 ### 👍 Credits
-- [soniajoseph](https://github.com/soniajoseph) for GoodReads quote scraper
+- [soniajoseph](https://github.com/soniajoseph) for GoodReads quote scraper from IMDB
